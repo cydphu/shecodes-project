@@ -74,6 +74,18 @@ fahrenheit.addEventListener("click", showFahrenheit);
 
 //
 
+function displayWeatherCondition(response) {
+  document.querySelector(".city").innerHTML = response.data.name;
+  document.querySelector(".todays-temp").innerHTML = Math.round(
+    response.data.main.temp
+  );
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+}
+
 function searchCurrentCity(city) {
   let apiKey = "80a4d0db16a590f9952e17295643238f";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
