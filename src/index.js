@@ -75,7 +75,7 @@ fahrenheit.addEventListener("click", showFahrenheit);
 //
 
 function displayWeatherCondition(response) {
-  document.querySelector(".city").innerHTML = response.data.name;
+  document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector(".todays-temp").innerHTML = Math.round(
     response.data.main.temp
   );
@@ -92,6 +92,12 @@ function searchCurrentCity(city) {
   axios.get(apiUrl).then(displayWeatherCondition);
 }
 
+function handleSubmit(event) {
+  event.preventDefault();
+  let city = document.querySelector("#search-city-form").value;
+  searchCurrentCity(city);
+}
+
 function searchPosition(position) {
   let apiKey = "80a4d0db16a590f9952e17295643238f";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
@@ -103,5 +109,8 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(searchPosition);
 }
 let currentLocation = document.querySelector("#current-button");
+
+let searchForm = document.querySelector("#search-city-form");
+searchForm.addEventListener("submit", handleSubmit);
 
 currentLocation.addEventListener("click", getCurrentLocation);
