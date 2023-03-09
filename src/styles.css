@@ -19,10 +19,6 @@ ul {
   margin: 15px auto;
 }
 
-.weather-forecast-wrapper {
-  max-width: 670px;
-  margin: 15px auto;
-}
 .weather-forecast {
   border: 1px solid black;
   border-radius: 10px;
@@ -60,6 +56,10 @@ h3 {
 
 li {
   padding: 8px;
+}
+
+small {
+  text-align: center;
 }
 
 .todays-date {
