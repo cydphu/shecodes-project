@@ -14,8 +14,8 @@ ul {
   margin-top: 15px;
 }
 
-.container {
-  width: 670px;
+.weather-forecast-wrapper {
+  max-width: 670px;
   margin: 15px auto;
 }
 .weather-forecast {
