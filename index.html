@@ -26,111 +26,110 @@
 
   <body>
     <div class="container">
-      <div clas="weather-forecast-wrapper">
-        <div class="weather-forecast">
-          <form class="search-form" id="search-city-form">
-            <div class="row one">
-              <div class="col-7">
-                <input
-                  type="search"
-                  placeholder="search for a location"
-                  class="form-control shadow-sm"
-                  id="search-location"
-                />
-              </div>
-
-              <div class="col-2">
-                <input
-                  type="submit"
-                  value="search"
-                  class="form-control shadow-sm"
-                />
-              </div>
-              <div class="col-3">
-                <input
-                  type="button"
-                  value="Current City"
-                  class="current-location form-control shadow-sm"
-                  id="current-button"
-                />
-              </div>
-            </div>
-          </form>
-
-          <br />
-          <h2 id="city">Tomball, TX</h2>
-
-          <p class="todays-date">Sunday Feb, 20</p>
-
-          <div class="row two">
-            <div class="col-8 temp-icon">
-              <img src="img/cloudy-day-1.svg" class="temp-icon" />
-              <span class="todays-temp">70</span>
-              <span class="units">
-                <a href="#" id="fahrenheit-link">°F </a>|
-                <a href="#" id="celsius-link">°C</a></span
-              >
+      <div class="weather-forecast">
+        <form class="search-form" id="search-city-form">
+          <div class="row one">
+            <div class="col-7">
+              <input
+                type="search"
+                placeholder="search for a location"
+                class="form-control shadow-sm"
+                id="search-location"
+              />
             </div>
 
-            <div class="col-4">
-              <ul>
-                <li>Humidity: <span id="humidity">86</span> %</li>
-                <li>Wind: <span id="wind">1</span> mph</li>
-              </ul>
+            <div class="col-2">
+              <input
+                type="submit"
+                value="search"
+                class="form-control shadow-sm"
+              />
             </div>
+            <div class="col-3">
+              <input
+                type="button"
+                value="Current City"
+                class="current-location form-control shadow-sm"
+                id="current-button"
+              />
+            </div>
+          </div>
+        </form>
+
+        <br />
+        <h2 id="city">Tomball, TX</h2>
+
+        <p class="todays-date">Sunday Feb, 20</p>
+
+        <div class="row two">
+          <div class="col-8 temp-icon">
+            <img src="img/cloudy-day-1.svg" class="temp-icon" />
+            <span class="todays-temp">70</span>
+            <span class="units">
+              <a href="#" id="fahrenheit-link">°F </a>|
+              <a href="#" id="celsius-link">°C</a></span
+            >
+          </div>
+
+          <div class="col-4">
+            <ul>
+              <li>Humidity: <span id="humidity">86</span> %</li>
+              <li>Wind: <span id="wind">1</span> mph</li>
+            </ul>
           </div>
         </div>
       </div>
-      <br />
-
-      <div class="container">
-        <div class="forecast-container">
-          <h3>Next 5 days</h3>
-
-          <br />
-
-          <div class="container">
-            <div class="row three weekly">
-              <div class="col-2 weekdays-blocks">
-                <p class="weekdays">Monday</p>
-                <img src="img/cloudy.svg" />
-                <p class="weather-properties">76°F</p>
-              </div>
-
-              <div class="col-2 weekdays-blocks">
-                <p class="weekdays">Tuesday</p>
-                <img src="img/cloudy-day-3.svg" />
-                <p class="weather-properties">75°F</p>
-              </div>
-
-              <div class="col-2 weekdays-blocks">
-                <p class="weekdays">Wednesday</p>
-                <img src="img/rainy-6.svg" />
-                <p class="weather-properties">54°F</p>
-              </div>
-
-              <div class="col-2 weekdays-blocks">
-                <p class="weekdays">Thursday</p>
-                <img src="img/day.svg" />
-                <p class="weather-properties">67°F</p>
-              </div>
-
-              <div class="col-2 weekdays-blocks">
-                <p class="weekdays">Friday</p>
-                <img src="img/cloudy-day-3.svg" />
-                <p class="weather-properties">55°F</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <small>
-        <a href="https://github.com/cydphu/shecodes-project" target="_blank"
-          >Open-source code</a
-        >
-        by Elcyd Phu
-      </small>
     </div>
+    <br />
+
+    <div class="container">
+      <div class="forecast-container">
+        <h3>Next 5 days</h3>
+
+        <br />
+
+        <div class="container">
+          <div class="row three weekly">
+            <div class="col-2 weekdays-blocks">
+              <p class="weekdays">Monday</p>
+              <img src="img/cloudy.svg" />
+              <p class="weather-properties">76°F</p>
+            </div>
+
+            <div class="col-2 weekdays-blocks">
+              <p class="weekdays">Tuesday</p>
+              <img src="img/cloudy-day-3.svg" />
+              <p class="weather-properties">75°F</p>
+            </div>
+
+            <div class="col-2 weekdays-blocks">
+              <p class="weekdays">Wednesday</p>
+              <img src="img/rainy-6.svg" />
+              <p class="weather-properties">54°F</p>
+            </div>
+
+            <div class="col-2 weekdays-blocks">
+              <p class="weekdays">Thursday</p>
+              <img src="img/day.svg" />
+              <p class="weather-properties">67°F</p>
+            </div>
+
+            <div class="col-2 weekdays-blocks">
+              <p class="weekdays">Friday</p>
+              <img src="img/cloudy-day-3.svg" />
+              <p class="weather-properties">55°F</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <small class="open-source">
+      <a href="https://github.com/cydphu/shecodes-project" target="_blank"
+        >Open-source code</a
+      >
+      by Elcyd Phu
+    </small>
 
     <script src="src/index.js"></script>
   </body>

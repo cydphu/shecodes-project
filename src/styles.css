@@ -58,8 +58,19 @@ li {
   padding: 8px;
 }
 
-small {
-  text-align: center;
+.open-source {
+  position: relative;
+  left: 630px;
+  top: 25px;
+  font-size: 12px;
+  color: rgba(229, 229, 229, 0.602);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  max-width: 670px;
+}
+
+small a {
+  text-decoration: none;
 }
 
 .todays-date {
