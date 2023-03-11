@@ -45,8 +45,8 @@ h1 {
 }
 
 h2 {
-  padding: 10px;
-  margin: 10px auto;
+  padding: 15px;
+  margin-top: -20px;
 }
 
 h3 {
@@ -60,13 +60,11 @@ li {
 
 .open-source {
   position: relative;
-  left: 630px;
-  top: 25px;
+  bottom: -20px;
   font-size: 12px;
   color: rgba(229, 229, 229, 0.602);
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  max-width: 670px;
 }
 
 small a {
@@ -97,6 +95,7 @@ small a {
 
 .search-form {
   padding: 10px;
+  padding-left: 30px;
 }
 
 .temp-icon {
@@ -122,5 +121,9 @@ small a {
 
 .weekly {
   justify-content: space-evenly;
-  padding-right: 25px;
+  padding-right: 0px;
+}
+
+.current-location {
+  width: 45px;
 }

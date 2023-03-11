@@ -29,7 +29,7 @@
       <div class="weather-forecast">
         <form class="search-form" id="search-city-form">
           <div class="row one">
-            <div class="col-7">
+            <div class="col-8">
               <input
                 type="search"
                 placeholder="search for a location"
@@ -45,10 +45,10 @@
                 class="form-control shadow-sm"
               />
             </div>
-            <div class="col-3">
+            <div class="col-2">
               <input
                 type="button"
-                value="Current City"
+                value="📍"
                 class="current-location form-control shadow-sm"
                 id="current-button"
               />
@@ -75,6 +75,7 @@
             <ul>
               <li>Humidity: <span id="humidity">86</span> %</li>
               <li>Wind: <span id="wind">1</span> mph</li>
+              <li>Feels like: <span id="feels-like-temp"></span> °</li>
             </ul>
           </div>
         </div>
@@ -124,12 +125,14 @@
       </div>
     </div>
 
-    <small class="open-source">
-      <a href="https://github.com/cydphu/shecodes-project" target="_blank"
-        >Open-source code</a
-      >
-      by Elcyd Phu
-    </small>
+    <p class="text-center">
+      <small class="open-source">
+        <a href="https://github.com/cydphu/shecodes-project" target="_blank"
+          >Open-source code</a
+        >
+        by Elcyd Phu
+      </small>
+    </p>
 
     <script src="src/index.js"></script>
   </body>

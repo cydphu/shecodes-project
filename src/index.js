@@ -84,11 +84,14 @@ function displayWeatherCondition(response) {
     response.data.wind.speed
   );
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#feels-like-temp").innerHTML = Math.round(
+    response.data.main.feels_like
+  );
 }
 
 function searchCurrentCity(city) {
   let apiKey = "80a4d0db16a590f9952e17295643238f";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayWeatherCondition);
 }
 
@@ -100,7 +103,7 @@ function handleSubmit(event) {
 
 function searchPosition(position) {
   let apiKey = "80a4d0db16a590f9952e17295643238f";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayWeatherCondition);
 }
 
