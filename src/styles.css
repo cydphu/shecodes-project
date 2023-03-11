@@ -8,10 +8,14 @@ body {
   color: white;
 }
 
-ul {
+#updated-date {
   list-style: none;
+  margin-bottom: 40px;
+}
+.other-info {
   padding-left: 5px;
   margin-top: 15px;
+  list-style: none;
 }
 
 .container {
@@ -41,12 +45,11 @@ ul {
   margin: -40px auto;
 }
 
-h1 {
-}
-
-h2 {
-  padding: 15px;
+#city {
+  padding-left: 25px;
   margin-top: -20px;
+  padding-left: 25px;
+  margin-bottom: 0px;
 }
 
 h3 {
@@ -54,10 +57,9 @@ h3 {
   padding-left: 15px;
 }
 
-li {
-  padding: 8px;
+li::first-letter {
+  text-transform: capitalize;
 }
-
 .open-source {
   position: relative;
   bottom: -20px;
@@ -69,12 +71,6 @@ li {
 
 small a {
   text-decoration: none;
-}
-
-.todays-date {
-  position: relative;
-  left: 15px;
-  top: -15px;
 }
 
 .todays-temp {

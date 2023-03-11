@@ -1,14 +1,6 @@
-let todayDate = document.querySelector(".todays-date");
+let todayDate = document.querySelector("#todays-date");
 
-let weekDays = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
+let weekDays = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
 let months = [
   "Jan",
   "Feb",
@@ -39,7 +31,7 @@ if (minutes < 10) {
 }
 let year = now.getFullYear();
 
-todayDate.innerHTML = `${weekDay}, ${month} ${date}, ${year} ${hour}:${minutes}`;
+todayDate.innerHTML = `${weekDay} ${hour}:${minutes}`;
 
 //
 function showCity(event) {
@@ -87,6 +79,7 @@ function displayWeatherCondition(response) {
   document.querySelector("#feels-like-temp").innerHTML = Math.round(
     response.data.main.feels_like
   );
+  document.querySelector("#todays-date").innerHTML = response.data.dt`* 1000`;
 }
 
 function searchCurrentCity(city) {
