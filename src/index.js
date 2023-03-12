@@ -1,102 +1,94 @@
-let todayDate = document.querySelector("#todays-date");
+//formatting new date
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[date.getDay()];
 
-let weekDays = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
-let months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-
-let now = new Date();
-let weekDay = weekDays[now.getDay()];
-let month = months[now.getMonth()];
-let date = now.getDate();
-let hour = now.getHours();
-if (hour < 10) {
-  hour = `0${hour}`;
+  return `${day} ${hours}:${minutes}`;
 }
-
-let minutes = now.getMinutes();
-if (minutes < 10) {
-  minutes = `0${minutes}`;
-}
-let year = now.getFullYear();
-
-todayDate.innerHTML = `${weekDay} ${hour}:${minutes}`;
 
 //
-function showCity(event) {
-  event.preventDefault();
-  let searchInput = document.querySelector("#search-location");
-  let h2 = document.querySelector("h2");
-  h2.innerHTML = `${searchInput.value}`;
-  searchCurrentCity(searchInput.value);
-}
-
-let citySearch = document.querySelector("#search-city-form");
-citySearch.addEventListener("submit", showCity);
-
-//
-let temperature = document.querySelector(".todays-temp");
-
-function showCelsius(event) {
-  event.preventDefault();
-  temperature.innerHTML = `2`;
-}
-
-let celsius = document.querySelector("#celsius-link");
-celsius.addEventListener("click", showCelsius);
-
-function showFahrenheit(event) {
-  event.preventDefault();
-  temperature.innerHTML = `70`;
-}
-
-let fahrenheit = document.querySelector("#fahrenheit-link");
-fahrenheit.addEventListener("click", showFahrenheit);
-
-//
-
 function displayWeatherCondition(response) {
-  document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector(".todays-temp").innerHTML = Math.round(
-    response.data.main.temp
+  let tempElement = document.querySelector(".todays-temp");
+  let cityElement = document.querySelector("#city");
+  let descriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  let feelsLikeElement = document.querySelector("#feels-like-temp");
+  let dateElement = document.querySelector("#todays-date");
+  let iconElement = document.querySelector("#icon");
+
+  celsiusTemp = response.data.main.temp;
+
+  tempElement.innerHTML = Math.round(response.data.main.temp);
+  cityElement.innerHTML = response.data.name;
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
+  feelsLikeElement.innerHTML = Math.round(response.data.main.feels_like);
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind").innerHTML = Math.round(
-    response.data.wind.speed
-  );
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#feels-like-temp").innerHTML = Math.round(
-    response.data.main.feels_like
-  );
-  document.querySelector("#todays-date").innerHTML = response.data.dt`* 1000`;
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
-function searchCurrentCity(city) {
+function search(city) {
   let apiKey = "80a4d0db16a590f9952e17295643238f";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
   axios.get(apiUrl).then(displayWeatherCondition);
 }
 
 function handleSubmit(event) {
   event.preventDefault();
-  let city = document.querySelector("#search-city-form").value;
-  searchCurrentCity(city);
+  let cityInputElement = document.querySelector("#search-location");
+  search(cityInputElement.value);
 }
 
+function displayFahrenheitTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector(".todays-temp");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
+}
+
+function displayCelsiusTemp(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let temperatureElement = document.querySelector(".todays-temp");
+  temperatureElement.innerHTML = Math.round(celsiusTemp);
+}
+
+let celsiusTemp = null;
+
+//
+let form = document.querySelector("#search-city-form");
+form.addEventListener("submit", handleSubmit);
+
+// convert fahrenheit and celsius
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemp);
+
+//current location
 function searchPosition(position) {
   let apiKey = "80a4d0db16a590f9952e17295643238f";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=imperial`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherCondition);
 }
 
@@ -104,9 +96,12 @@ function getCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(searchPosition);
 }
-let currentLocation = document.querySelector("#current-button");
+let currentLocationButton = document.querySelector("#current-button");
 
 let searchForm = document.querySelector("#search-city-form");
 searchForm.addEventListener("submit", handleSubmit);
 
-currentLocation.addEventListener("click", getCurrentLocation);
+currentLocationButton.addEventListener("click", getCurrentLocation);
+
+//
+search("Tokyo");

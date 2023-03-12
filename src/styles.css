@@ -11,6 +11,7 @@ body {
 #updated-date {
   list-style: none;
   margin-bottom: 40px;
+  padding-left: 25px;
 }
 .other-info {
   padding-left: 5px;
@@ -73,20 +74,27 @@ small a {
   text-decoration: none;
 }
 
+small a:hover {
+  color: pink;
+}
+
 .todays-temp {
   font-size: 80px;
   position: relative;
-  top: -5px;
+  top: -40px;
+  right: -235px;
 }
 
 .units {
   line-height: 2;
   position: relative;
-  top: -55px;
+  top: -90px;
+  right: -235px;
+  text-decoration: none;
 }
 
-.temp-and-icon {
-  padding: 10px;
+a:link {
+  text-decoration: none;
 }
 
 .search-form {
@@ -94,11 +102,13 @@ small a {
   padding-left: 30px;
 }
 
-.temp-icon {
-  height: 250px;
+.temp-icon img {
+  margin-right: 5px;
+  height: 64px;
+  width: 64px;
   position: relative;
-  top: -20px;
-  right: -5px;
+  left: 85px;
+  bottom: -50px;
 }
 
 .weekdays-blocks:hover {
@@ -122,4 +132,13 @@ small a {
 
 .current-location {
   width: 45px;
+}
+
+.active {
+  color: white;
+  cursor: default;
+}
+
+.active:hover {
+  text-decoration: none;
 }
