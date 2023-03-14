@@ -142,3 +142,10 @@ a:link {
 .active:hover {
   text-decoration: none;
 }
+
+.weekdays {
+  opacity: 0.95;
+}
+.min-temp {
+  opacity: 0.5;
+}
