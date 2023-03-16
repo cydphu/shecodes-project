@@ -102,6 +102,10 @@ a:link {
   padding-left: 30px;
 }
 
+#search-city-form {
+  opacity: 0.85;
+}
+
 .temp-icon img {
   margin-right: 5px;
   height: 64px;
@@ -109,6 +113,10 @@ a:link {
   position: relative;
   left: 85px;
   bottom: -50px;
+}
+
+#temperature-icon {
+  margin-top: -30px;
 }
 
 .weekdays-blocks:hover {
@@ -156,4 +164,8 @@ a:link {
 }
 .min-temp {
   opacity: 0.5;
+}
+
+#current-button {
+  opacity: 1;
 }
