@@ -14,24 +14,47 @@ function formatDate(timestamp) {
 
   return `${day} ${hours}:${minutes}`;
 }
+///
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  return days[day];
+}
 
 ///
-function displayForecast() {
+function displayForecast(response) {
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
 
-  let forecastHTML = `<div class="row">`;
-  let days = ["Thursday", "Friday", "Saturday", "Sunday"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2 weekdays-blocks">
-          <p class="weekdays">${day}</p>
-          <img src="img/01d.svg" />
+  let forecastHTML = `<div class="row" id="weekdays-forecast">`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2 weekdays-blocks">
+          <p class="weekdays">${formatDay(forecastDay.dt)}</p>
+          <img src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"
+                alt=""
+                width="40" />
           <p class="weather-properties">
-            <span class="max-temp">76°</span>
-            <span class="min-temp">67°</span>
+            <span class="max-temp">${Math.round(forecastDay.temp.max)}° </span>
+            <span class="min-temp">${Math.round(forecastDay.temp.min)}° </span>
           </p>
     </div>`;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -45,7 +68,7 @@ function getForecast(coordinates) {
   let apiKey = "f8e6a9e3d6fde87cb38868da460b1371";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
 
-  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
 }
 function displayWeatherCondition(response) {
   let tempElement = document.querySelector(".todays-temp");
@@ -138,5 +161,3 @@ currentLocationButton.addEventListener("click", getCurrentLocation);
 
 //
 search("Tokyo");
-
-displayForecast();
